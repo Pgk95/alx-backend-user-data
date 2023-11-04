@@ -2,7 +2,9 @@
 """log message obfuscated"""
 
 
-import re, os, logging
+import re
+import os
+import logging
 import mysql.connector
 from typing import List
 
