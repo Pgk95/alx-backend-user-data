@@ -70,3 +70,28 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         )
 
         return connection
+
+
+def main() -> None:
+    """obtains a database connection using get_db
+       and retrieves all rows in the users table
+     """
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+
+    headers = [i[0] for i in cursor.description]
+    logger = get_logger()
+
+    for row in cursor:
+        info_answer = ''
+        for f, p in zip(row, headers):
+            info_answer += f'{p}={f}; '
+        logger.info(info_answer)
+    
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
