@@ -1,0 +1,5 @@
+2023-11-04 11:08:53,115 - test - DEBUG - This is a debug message
+2023-11-04 11:08:53,115 - test - INFO - This is an info message
+2023-11-04 11:08:53,115 - test - WARNING - This is a warning message
+2023-11-04 11:08:53,115 - test - ERROR - This is an error message
+2023-11-04 11:08:53,116 - test - CRITICAL - This is a critical message
