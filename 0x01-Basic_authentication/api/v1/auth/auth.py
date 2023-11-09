@@ -10,7 +10,7 @@ class Auth:
 
     def require_auth(self, path: str, excuded_paths: List[str]) -> bool:
         """Require auth"""
-        if path is None or excuded_paths is None or excuded_paths == []:
+        if path is None or excuded_paths is None or not len(excuded_paths):
             return True
         if path[-1] != '/':
             path += '/'
