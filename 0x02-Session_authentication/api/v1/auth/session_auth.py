@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """session auth"""
 
+
+from typing import TypeVar
 from api.v1.auth.auth import Auth
 import uuid
 
@@ -22,3 +24,10 @@ class SessionAuth(Auth):
         if session_id is None or type(session_id) != str:
             return None
         return self.user_id_by_session_id.get(session_id)
+    
+    def current_user(self, request=None):
+        """returns a user based on a cookie value"""
+        session_id = self.session_cookie(request)
+        user_id = self.user_id_for_session_id(session_id)
+        from models.user import User
+        return User.get(user_id)
