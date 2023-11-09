@@ -43,7 +43,7 @@ def forbidden(error) -> str:
 
 @app.before_request
 def before_request():
-    """before request method"""
+    """before request"""
     requested_path = [
         '/api/v1/status/',
         '/api/v1/unauthorized/',
