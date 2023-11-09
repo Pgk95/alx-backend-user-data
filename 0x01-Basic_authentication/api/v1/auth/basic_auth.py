@@ -15,3 +15,12 @@ class BasicAuth(Auth):
         if 'Basic ' not in auth_header:
             return None
         return auth_header[6:]
+    
+    def decode_base64_authorization_header(self, base64_auth_header: str) -> str:
+        """returns the decoded value of a Base64 string"""
+        if base64_auth_header is None or not isinstance(base64_auth_header, str):
+            return None
+        try:
+            return base64.b64decode(base64_auth_header).decode('utf-8')
+        except Exception:
+            return None
