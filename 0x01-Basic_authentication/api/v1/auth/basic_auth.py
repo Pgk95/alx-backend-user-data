@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""basic auth class"""
-
+"""
+    basic auth class
+"""
 from api.v1.app import Auth
 
 
 class BasicAuth(Auth):
-    """BasicAuth class"""
-
+    """
+    BasicAuth class
+    """
+    pass
