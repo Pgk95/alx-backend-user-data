@@ -11,7 +11,7 @@ from os import getenv
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def session_login():
     """
-    Authenticate a user for login.
+    Session login
     """
     email = request.form.get('email')
     password = request.form.get('password')
