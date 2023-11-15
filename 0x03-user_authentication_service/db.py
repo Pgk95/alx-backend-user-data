@@ -9,6 +9,7 @@ from sqlalchemy.orm.session import Session
 from user import Base, User
 
 
+
 class DB:
     """DB class
     """
@@ -38,5 +39,6 @@ class DB:
         session = self._session
         user = User(email=email, hashed_password=hashed_password)
         session.add(user)
+        session.flush()
         session.commit()
         return user
