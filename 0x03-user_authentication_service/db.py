@@ -9,7 +9,6 @@ from sqlalchemy.orm.session import Session
 from user import Base, User
 
 
-
 class DB:
     """DB class
     """
@@ -35,7 +34,7 @@ class DB:
         """Add a new user to the database"""
         if not email or not hashed_password:
             return None
-        
+
         session = self._session
         user = User(email=email, hashed_password=hashed_password)
         session.add(user)
