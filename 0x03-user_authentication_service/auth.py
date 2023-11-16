@@ -35,9 +35,9 @@ class Auth:
             return False
 
     def _generate_uuid(self) -> str:
-        """generate uuid
+        """Generate uuid
         """
-        return str(uuid.uuid4())
+        return str(uuid())
 
 
 def _hash_password(password: str) -> bytes:
