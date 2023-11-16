@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 
 from user import Base, User
 
@@ -35,9 +37,7 @@ class DB:
         if not email or not hashed_password:
             return None
 
-        session = self._session
         user = User(email=email, hashed_password=hashed_password)
-        session.add(user)
-        session.flush()
-        session.commit()
+        self._session.add(user)
+        self._session.commit()
         return user
