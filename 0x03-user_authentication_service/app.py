@@ -46,10 +46,10 @@ def login() -> str:
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout() -> None:
     """logout"""
-    if request.cookies.get('session_id'):
-        if AUTH.destroy_session(request.cookies.get('session_id')):
-            return redirect('/')
-    else:
+    try:
+        AUTH.destroy_session(request.cookies.get('session_id'))
+        return redirect('/')
+    except Exception:
         abort(403)
 
 
