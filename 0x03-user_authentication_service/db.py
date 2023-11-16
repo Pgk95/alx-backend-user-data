@@ -51,7 +51,7 @@ class DB:
             raise NoResultFound
         return user
 
-    def update_user(self, user_id: int, **kwargs):
+    def update_user(self, user_id: int, **kwargs) -> None:
         """update user attributes"""
         user = self.find_user_by(id=user_id)
 
@@ -59,10 +59,10 @@ class DB:
             raise NoResultFound
 
         valid_user_attributes = {
-            'email': str,
-            'hashed_password': str,
-            'session_id': str,
-            'reset_token': str
+            'email',
+            'hashed_password',
+            'session_id',
+            'reset_token'
         }
 
         for key, value in kwargs.items():
@@ -70,3 +70,5 @@ class DB:
                 raise ValueError
 
             setattr(user, key, value)
+        
+        self._session.commit()
