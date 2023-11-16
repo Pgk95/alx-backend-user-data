@@ -50,7 +50,7 @@ def logout() -> None:
     if not (session_id or AUTH.get_user_from_session_id(session_id)):
         abort(403)
     AUTH.destroy_session(session_id)
-    return redirect('/')
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":
