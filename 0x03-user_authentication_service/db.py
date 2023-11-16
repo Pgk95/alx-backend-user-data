@@ -50,3 +50,24 @@ class DB:
         if not user:
             raise NoResultFound
         return user
+
+    def update_user(self, user_id: int, **kwargs):
+        """update user attributes"""
+        user = self.find_user_by(id=user_id)
+
+        if not user:
+            raise NoResultFound
+
+        valid_user_attributes = {
+            'id': int,
+            'email': str,
+            'hashed_password': str,
+            'session_id': str,
+            'reset_token': str
+        }
+
+        for key, value in kwargs.items():
+            if key not in valid_user_attributes:
+                raise ValueError
+
+            setattr(user, key, value)
