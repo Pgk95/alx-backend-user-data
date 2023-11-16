@@ -59,7 +59,6 @@ class DB:
             raise NoResultFound
 
         valid_user_attributes = {
-            'id': int,
             'email': str,
             'hashed_password': str,
             'session_id': str,
